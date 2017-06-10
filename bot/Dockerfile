@@ -13,9 +13,14 @@ RUN npm install
 # we can make all the changes we want to src without having to do any of the
 # above lines when we re-build
 ADD src src
+
 # when we're simply running it locally, in development
 # we'll override this with `-v` to map to src live
 # note this means you'll still have to rebuild  when you
+
+# we won't by using -v on the server
+ADD input input
+ADD fonts fonts
 
 # and then finally run it
 CMD node  --harmony-async-await ./src/index.js

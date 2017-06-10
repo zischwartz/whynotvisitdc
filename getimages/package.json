@@ -13,6 +13,7 @@
     "uuid": "^3.0.1",
     "images-scraper": "2.0.11",
     "underscore": "^1.8.3",
+    "throttled-request": "^0.1.1",
     "request":"2.81.0 "
   }
 }

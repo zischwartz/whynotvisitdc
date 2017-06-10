@@ -10,7 +10,8 @@
     "bot-build": "docker build -f bot/Dockerfile -t zischwartz/node-cairo ./bot",
     "bot-run": "docker run --rm -it -v $(pwd)/bot/src:/app/src -v $(pwd)/bot/output:/app/output zischwartz/node-cairo",
     "bot-debug": "docker run --rm -it -v $(pwd)/bot/src:/app/src -v $(pwd)/bot/output:/app/output zischwartz/node-cairo bash",
-    "resize-mv": "sips -Z 300 getimages/output/* && mv getimages/output bot/src/images",
+    "resize-i": "sips -Z 300 getimages/output/*",
+    "cp-i": "cp -R getimages/output bot/src/images",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",

@@ -2,9 +2,17 @@
 let fs = require('fs')
 let request = require('request')
 let Scraper = require('images-scraper')
+let throttledRequest = require('throttled-request')(request);
 
+throttledRequest.configure({
+  requests: 5,
+  milliseconds: 1000
+});
+// TODO should throttl
+// https://www.npmjs.com/package/throttled-request
 
 let people = ["Donald Trump", "Sarah Huckabee Sanders", "Mike Pence", "Sean Spicer", "Kellyanne Conway", "Steve Bannon", "Jared Kushner", "Ivanka Trump", "Mitch McConnell", "Paul Ryan", "Rex Tillerson", "Sebastian Gorka", "Jeff Sessions"]
+// let people = ["Sarah Huckabee Sanders", "Kellyanne Conway", "Sebastian Gorka", "Jeff Sessions"] //, "Mike Pence", "Sean Spicer", "Kellyanne Conway", "Steve Bannon", "Jared Kushner", "Ivanka Trump", "Mitch McConnell", "Paul Ryan", "Rex Tillerson", "Sebastian Gorka", "Jeff Sessions"]
 
 
 // console.log(optional_people[0].replace(/ /g, '_'))
@@ -27,14 +35,27 @@ function download_file(url, term, ext){
   // let ext = url.split('.')[url.split('.').length-1]
   // console.log(ext)
   // if (ext.length>4){return false}
-  console.log('.')
-  request(url).pipe(fs.createWriteStream(`./output/${term}.${ext}`))
+  return new Promise((resolve, reject) => {
+      // const file = fs.createWriteStream(filePath);
+      let file = fs.createWriteStream(`./output/${term}.${ext}`)
+      // console.log('.')
+      request(url).on('error', (e)=> console.log('e')).pipe(file)
+      // request(url, {timeout: 1500}).pipe(file)
+      // file.end()
+      file.on("finish", () => { resolve(true) });
+  });
+  // request(url).pipe(fs.createWriteStream(`./output/${term}.${ext}`))
+  // request(url).pipe(fs.createWriteStream(`./output/${term}.${ext}`))
 }
 
 async function get_for_term(term){
   console.log(`Getting Images For: ${term}`)
   let list = await get_image_urls(term)
-  list.forEach( (hit, i)=> download_file(hit["url"], `${term} ${i}`, hit["format"]))
+  // doh this needs to return when all done.
+  // and this is where you could put a delay. or just use request throttle
+  let ps = list.map( (hit, i)=> download_file(hit["url"], `${term} ${i}`, hit["format"]))
+  return Promise.all(ps)
+  // return await list.forEach( async (hit, i)=> await download_file(hit["url"], `${term} ${i}`, hit["format"]))
   // download_file(urls[9], term)
 }
 
@@ -42,6 +63,7 @@ async function start(arr){
   for (let term of arr ){
     await get_for_term(term)
   }
+  console.log('Done!')
 }
 
 start(people)

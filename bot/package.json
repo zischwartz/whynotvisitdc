@@ -14,6 +14,8 @@
     "random-color": "^1.0.1",
     "corpora": "github:dariusk/corpora",
     "underscore": "^1.8.3",
+    "later": "^1.2.0",
+    "twit": "^2.2.5",
     "node-canvas": "github:automattic/node-canvas#v2.0.0-alpha.2"
   }
 }
