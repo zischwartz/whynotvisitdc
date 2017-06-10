@@ -1,0 +1,19 @@
+{
+  "name": "whynotimagebot",
+  "version": "1.0.0",
+  "description": "an example for using docker machine",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {},
+  "dependencies": {
+    "uuid": "^3.0.1",
+    "random-color": "^1.0.1",
+    "corpora": "github:dariusk/corpora",
+    "underscore": "^1.8.3",
+    "node-canvas": "github:automattic/node-canvas#v2.0.0-alpha.2"
+  }
+}

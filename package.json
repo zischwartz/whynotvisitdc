@@ -1,0 +1,18 @@
+{
+  "name": "whynotvisitdc",
+  "version": "1.0.0",
+  "description": "A twitter bot",
+  "main": "src/index.js",
+  "scripts": {
+    "geti-build": "docker build -f getimages/Dockerfile -t zischwartz/geti getimages",
+    "geti-run": "docker run --rm -it -v $(pwd)/getimages/src:/app/src -v $(pwd)/getimages/output:/app/output zischwartz/geti",
+    "geti-debug": "docker run --rm -it -v $(pwd)/getimages/src:/app/src -v $(pwd)/getimages/output:/app/output zischwartz/geti bash",
+    "bot-build": "docker build -f bot/Dockerfile -t zischwartz/node-cairo ./bot",
+    "bot-run": "docker run --rm -it -v $(pwd)/bot/src:/app/src -v $(pwd)/bot/output:/app/output zischwartz/node-cairo",
+    "bot-debug": "docker run --rm -it -v $(pwd)/bot/src:/app/src -v $(pwd)/bot/output:/app/output zischwartz/node-cairo bash",
+    "resize-mv": "sips -Z 300 getimages/output/* && mv getimages/output bot/src/images",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

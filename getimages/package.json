@@ -1,0 +1,18 @@
+{
+  "name": "grabs-images",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {},
+  "dependencies": {
+    "uuid": "^3.0.1",
+    "images-scraper": "2.0.11",
+    "underscore": "^1.8.3",
+    "request":"2.81.0 "
+  }
+}
