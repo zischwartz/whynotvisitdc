@@ -8,14 +8,11 @@ throttledRequest.configure({
   requests: 5,
   milliseconds: 1000
 });
-// TODO should throttl
-// https://www.npmjs.com/package/throttled-request
 
+// XXX should all be in one place, make sure this matches
 let people = ["Donald Trump", "Sarah Huckabee Sanders", "Mike Pence", "Sean Spicer", "Kellyanne Conway", "Steve Bannon", "Jared Kushner", "Ivanka Trump", "Mitch McConnell", "Paul Ryan", "Rex Tillerson", "Sebastian Gorka", "Jeff Sessions"]
-// let people = ["Sarah Huckabee Sanders", "Kellyanne Conway", "Sebastian Gorka", "Jeff Sessions"] //, "Mike Pence", "Sean Spicer", "Kellyanne Conway", "Steve Bannon", "Jared Kushner", "Ivanka Trump", "Mitch McConnell", "Paul Ryan", "Rex Tillerson", "Sebastian Gorka", "Jeff Sessions"]
 
-
-// console.log(optional_people[0].replace(/ /g, '_'))
+// console.log(people[0].replace(/ /g, '_'))
 
 async function get_image_urls(term){
   let bing = new Scraper.Bing()

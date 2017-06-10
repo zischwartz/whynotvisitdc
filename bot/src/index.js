@@ -13,6 +13,9 @@ let tv_shows = require('corpora/data/film-tv/tv_shows')['tv_shows']
 let appliances = require('corpora/data/technology/appliances')['appliances']
 // console.log(human_descriptions)
 
+let trump_nicks = require('./jokes.js')
+console.log(trump_nicks.length)
+console.log(_.sample(trump_nicks))
 // who needs the long ones ? not me
 honorifics = honorifics.filter(x=>x.split(' ').length <= 3)
 

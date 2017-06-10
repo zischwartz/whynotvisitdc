@@ -5,6 +5,8 @@ let Canvas = require('canvas')
 let _ =  require('underscore')
 let uuidV4 = require('uuid/v4')
 
+Image = Canvas.Image
+
 // WIP
 // WIP
 // WIP
@@ -21,6 +23,15 @@ font_file_list.forEach( font=> {
   Canvas.registerFont(`./fonts/${font}`, {family: font.replace('.ttf', '')})
   // console.log('registered font', font.replace('.ttf', ''))
 })
+
+// https://github.com/Automattic/node-canvas#imagesrcbuffer
+
+fs.readFile(__dirname + '/images/squid.png', function(err, squid){
+  if (err) throw err;
+  img = new Image;
+  img.src = squid;
+  ctx.drawImage(img, 0, 0, img.width / 4, img.height / 4);
+});
 
 
 // create node-canvas instance

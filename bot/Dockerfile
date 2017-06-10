@@ -18,9 +18,5 @@ ADD src src
 # we'll override this with `-v` to map to src live
 # note this means you'll still have to rebuild  when you
 
-# we won't by using -v on the server
-ADD input input
-ADD fonts fonts
-
 # and then finally run it
 CMD node  --harmony-async-await ./src/index.js
