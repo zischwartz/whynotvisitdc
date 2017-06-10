@@ -5,10 +5,10 @@
   "main": "src/index.js",
   "scripts": {
     "geti-build": "docker build -f getimages/Dockerfile -t zischwartz/geti getimages",
-    "geti-run": "docker run --rm -it -v $(pwd)/getimages/src:/app/src -v $(pwd)/getimages/output:/app/output zischwartz/geti",
+    "geti-run": "docker run --rm -v $(pwd)/getimages/src:/app/src -v $(pwd)/getimages/output:/app/output zischwartz/geti",
     "geti-debug": "docker run --rm -it -v $(pwd)/getimages/src:/app/src -v $(pwd)/getimages/output:/app/output zischwartz/geti bash",
     "bot-build": "docker build -f bot/Dockerfile -t zischwartz/node-cairo ./bot",
-    "bot-run": "docker run --rm -it -v $(pwd)/bot/src:/app/src -v $(pwd)/bot/output:/app/output zischwartz/node-cairo",
+    "bot-run": "docker run --rm -v $(pwd)/bot/src:/app/src -v $(pwd)/bot/output:/app/output zischwartz/node-cairo",
     "bot-debug": "docker run --rm -it -v $(pwd)/bot/src:/app/src -v $(pwd)/bot/output:/app/output zischwartz/node-cairo bash",
     "resize-i": "sips -Z 300 getimages/output/*",
     "cp-i": "cp -R getimages/output bot/src/images",

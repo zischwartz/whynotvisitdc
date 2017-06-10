@@ -52,8 +52,8 @@ let trump_nicks = ["Cheeto Benito","Super Callous Fragile Racist",
 "Donny Dollhands","Orange Julius","Totalitarian Tangerine","Donny Moscow",
 "Trumpanzee","The Corrosive Cuckolded Kumquat","Donald Gump","The Pig-Eyed Piper"
 ,"Cuck L'orange","Baby Donnie Piss Boy","Orangatan","Retarded Underwood","Melancholia"
-,"tRump","DJ Trumpet","The President of Lies","Dongmold Dump","El Jefe Covfefe",
-"Donnie Moscow","Der Orangenfuhrer","Trump","Corn Fed Fascist","Small hands",
+,"DJ Trumpet","The President of Lies","Dongmold Dump","El Jefe Covfefe",
+"Donnie Moscow","Der Orangenfuhrer",,"Corn Fed Fascist","Small hands",
 "Dim Donnie","Frank Bollywood","Piss Wig","Donald the Terrible","Donnie Two-Scoops",
 ,"A CockJerk Orange","Trumpster Fire","Germy Orange Dildo",
 "Just A Complete Unrelenting Arsehole Literally All The Time"]

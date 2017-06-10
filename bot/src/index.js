@@ -1,4 +1,5 @@
 let fs = require('fs')
+let sentiment = require('sentiment')
 let _ = require('underscore')
 let nsa_projects = require('corpora/data/governments/nsa_projects')['codenames']
 let human_descriptions = require('corpora/data/humans/descriptions')['descriptions']
@@ -11,11 +12,13 @@ let monsters = require('corpora/data/mythology/monsters')['names']
 let first_names = require('corpora/data/humans/firstNames')['firstNames']
 let tv_shows = require('corpora/data/film-tv/tv_shows')['tv_shows']
 let appliances = require('corpora/data/technology/appliances')['appliances']
+let objects = require('corpora/data/objects/objects')['objects']
+let moods = require('corpora/data/humans/moods')['moods']
 // console.log(human_descriptions)
 
 let trump_nicks = require('./jokes.js')
-console.log(trump_nicks.length)
-console.log(_.sample(trump_nicks))
+// console.log(trump_nicks.length)
+// console.log(_.sample(trump_nicks))
 // who needs the long ones ? not me
 honorifics = honorifics.filter(x=>x.split(' ').length <= 3)
 
@@ -45,32 +48,29 @@ function meets_criteria(image_list){
 // helper, coin flip
 function flip(){ return Math.random() < 0.5 ? false : true }
 
-// Captions
-let general_prefixes = ["we got ", "there's ", "see the ", "they have ", ""]
+// Caption generator
 
-
+// recurse till sentiment of 0 or below
 function top_left(){
-  let a = _.sample(general_prefixes)
-  let b = _.sample(nsa_projects)
-  return `${a}${b.toLowerCase()}`
-  // console.log(flip())
+  let a = _.sample(human_descriptions)
+  let b = flip() ? _.sample(condiments) : _.sample(vegetables)
+  let res =  `${a} ${b.toLowerCase()}`
+  return (sentiment(res)['comparative'] > 0) ? top_middle(): res
 }
 
 function top_middle(){
-  let a = _.sample(human_descriptions)
-  let b = flip() ? _.sample(condiments) : _.sample(vegetables)
-  return `${a} ${b.toLowerCase()}`
+  let prefixes = ["we got ", "there's ", "see the ", "they have ", "see"]
+  let a = _.sample(prefixes)
+  let b = _.sample(nsa_projects)
+  return `${a}${b.toLowerCase()}`
 }
 
+// recurse till sentiment of 0 or below
 function top_right(){
-  let a =_.sample(agencies).toLowerCase()
-  a = a.split(' ')
-  a.pop()
-  // coinflip if we should remove some stop words
-  if (flip()){ a = _.without(a, "of", "the", "on", "and") }
-  if (a.length > 3) { a.pop() }
-  a = a.join(' ')
-  return a
+  let a = _.sample(moods)
+  let b =  _.sample(objects)
+  let res = `${a} ${b.toLowerCase()}`
+  return (sentiment(res)['comparative'] > 0) ? top_right(): res
 }
 
 function bottom_left(){
@@ -84,7 +84,6 @@ function bottom_middle(){
   let a = _.sample(honorifics)
   let b = _.sample(animals)
   b = b.charAt(0).toUpperCase() + b.slice(1)
-  // console.log(a,b)
   return `${a} ${b}`
 }
 
@@ -104,5 +103,6 @@ function bottom_right(){
 function make_six(){
   return [top_left(), top_middle(), top_right(), bottom_left(), bottom_middle(), bottom_right()]
 }
+
 
 console.log(make_six())
