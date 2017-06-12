@@ -61,8 +61,10 @@ function get_file(name){
 function draw_caption(ctx, text, x, y, wid){
   // is it too long for one line?
   if (ctx.measureText(text)['width'] > wid) {
-    let half = Math.floor(text.length/2)
-    let [first, second] = [text.substr(0, half), text.substr(half)]
+    let words = text.split(' ')
+    let half = Math.floor(words.length/2)
+    let [first, second] = [words.slice(0, half).join(' '), words.slice(half).join(' ')]
+    // let [first, second] = [text.substr(0, half), text.substr(half)]
     ctx.fillText(first, x, y)
     ctx.fillText(second, x, y+15) // XXX hardwiring fontsize
   }
