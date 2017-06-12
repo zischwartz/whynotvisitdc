@@ -41,9 +41,9 @@ font_file_list.forEach( font=> {
 // helper for below, promise of image buffer
 function get_file(name){
   return new Promise((resolve, reject)=>{
-    console.log(`loading: ${name}`)
+    // console.log(`loading: ${name}`)
     fs.readFile(`./src/images/${name}`, function(err, data){
-      console.log('done with', name)
+      // console.log('done with', name)
 
       let img = new Image;
       img.src =  data //block['image_data']
@@ -57,23 +57,36 @@ function get_file(name){
   })
 }
 
+//  helper for below
+function draw_caption(ctx, text, x, y, wid){
+  // is it too long for one line?
+  if (ctx.measureText(text)['width'] > wid) {
+    let half = Math.floor(text.length/2)
+    let [first, second] = [text.substr(0, half), text.substr(half)]
+    ctx.fillText(first, x, y)
+    ctx.fillText(second, x, y+15) // XXX hardwiring fontsize
+  }
+  else {
+    // single line case, normal
+    ctx.fillText(text, x, y)
+  }
+}
+
 
 async function build_post_image(data){
   // debug
   // data[0]["image_name"]= "Jared_Kushner_11.jpeg"
-
-  // load our small images
-  // let image_buffers = await  Promise.all(data.map( m => get_file(m["image_name"]) ))
-  let image_buffers = await Promise.all(data.map( m => get_file(m["image_name"]) ))
-  // console.log('z')
-  // console.log(image_buffers)
-  data.forEach( (x,i)=> x["image_data"]= image_buffers[i])
+  let results = data['data']
+  let meta = data['meta']
+  // load our small images with await
+  let image_buffers = await Promise.all(results.map( m => get_file(m["image_name"]) ))
+  results.forEach( (x,i)=> x["image_data"]= image_buffers[i])
 
   let canvas = new Canvas()
   canvas.width = post_image_dims.width
   canvas.height = post_image_dims.height
   let ctx = canvas.getContext("2d")
-  //
+
   let background_color = randomColor().hexString()
   ctx.fillStyle = background_color
   ctx.fillRect(0, 0, post_image_dims.width, post_image_dims.height)
@@ -81,15 +94,21 @@ async function build_post_image(data){
   // title
   ctx.textAlign = 'center'
   ctx.fillStyle = "black"
-  let font = _.sample(font_file_list).replace('.ttf', '')
-  console.log(font)
-  ctx.font = `55px "${font}"`;
+  let font = _.sample(font_file_list.filter(x=>x!="Roboto-Regular.ttf")).replace('.ttf', '')
+  // console.log(font)
+  // debug!
+  // meta['title'] ="Come on down to the District of Columbia"
+  let font_size = _.contains(["Frijole-Regular","BungeeShade-Regular", "FasterOne-Regular"], font) ? 30 : 36
+  font_size = meta["title"] == "Come on down to the District of Columbia" ? font_size : font_size+5
+  // console.log(font_size)
+  ctx.font = `${font_size}px "${font}"`
+  // ctx.font = meta['title'] !="Come on down to the District of Columbia" ?  `45px "${font}"`: `30px "${font}"`
   // ctx.font = '48px "Roboto-Regular"';
-  ctx.fillText("Why Not Visit DC?", post_image_dims.width/2, 75)
+  ctx.fillText(meta['title'], post_image_dims.width/2, 75)
 
 
   // for images and captions
-  data.forEach((block, i)=>{
+  results.forEach((block, i)=>{
     // draw it!
     let x = (i%3)*300+post_image_dims.margin+(300-block["image_data"]["width"])/2
     let y = Math.floor(i/3)*250+post_image_dims.block_start_y
@@ -103,9 +122,13 @@ async function build_post_image(data){
     ctx.textAlign = 'center'
     ctx.fillStyle = "black"
     ctx.font = '20px "Roboto-Regular"';
-    ctx.fillText(block['caption'], x+block["image_data"]["width"]/2, y+200)
+    // ctx.fillText(block['cap'], x+block["image_data"]["width"]/2, y+200)
+    draw_caption(ctx, block['cap'], x+block["image_data"]["width"]/2, y+200, block["image_data"]["width"]-10)
 
+    // draw_caption()
   })
+
+
 
   let post_image_buffer = canvas.toBuffer()
   let id = uuidV4()

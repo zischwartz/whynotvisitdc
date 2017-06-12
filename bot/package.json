@@ -12,7 +12,7 @@
   "dependencies": {
     "uuid": "^3.0.1",
     "random-color": "^1.0.1",
-    "corpora": "github:dariusk/corpora",
+    "corpora": "github:zischwartz/corpora",
     "underscore": "^1.8.3",
     "later": "^1.2.0",
     "twit": "^2.2.5",

@@ -58,4 +58,11 @@ let trump_nicks = ["Cheeto Benito","Super Callous Fragile Racist",
 "Just A Complete Unrelenting Arsehole Literally All The Time"]
 
 
-module.exports = trump_nicks
+trump_nicks = trump_nicks.map(x=>x.replace('The ', '').toLowerCase())
+
+let jared_nicks = ["totes qualified", '"adults"',"jar jar", "Globalist Gary", "jared", "kush"]
+// https://www.inverse.com/article/27285-steve-bannon-looks-like-memes]
+let bannon_nicks = ["fun doods","a racist bag of dicks", "not at all disgusting", "eczema-ridden space slug", "greyhound bus smells", "slimer came back to life", "fart wearing a man suit", "Baron Harkonnen's origin story", "Edgar the Bug", "every perp on Law & Order SVU "]
+let sean_nicks = ["Sphincter", "sean", "spicy", "melissa mccarthy", "good at talking", "lots of gum", "have some gum"]
+
+module.exports = {trump_nicks, jared_nicks, bannon_nicks, sean_nicks}
