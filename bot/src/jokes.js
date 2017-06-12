@@ -13,10 +13,9 @@ let trump_nicks = ["Cheeto Benito","Super Callous Fragile Racist",
 "The Apricot Pol Pot","Mango Unchained","Mandarin Messiah",
 "Gross Domestic Product","Fucking idiot.","Twitler","The Siberian Candidate"
 ,"Persimmon Palpatine","Midget Digits","The Apricot Ayatollah","Ku Klux Klown"
-,"Pumpkin Pinochet","The Prima Donald","Orange is the new black (sadly)","Twitler"
-,"Trump Followers = Redcaps","The Banana Republican",
-"Sir Orange Dickblossom of the Flaxen Weave","Emperor Hirocheeto",
-"\"Taking a Trump\"","Tangerine Tyrant","Donny Two Scoops",
+,"Pumpkin Pinochet","The Prima Donald","Orange is the new black (sadly)","Twitler",
+"The Banana Republican", "Sir Orange Dickblossom of the Flaxen Weave",
+"Emperor Hirocheeto", "\"Taking a Trump\"","Tangerine Tyrant","Donny Two Scoops",
 "Trumplethinskin","Orange Foolius","The Mandarin Candidate","Ofputin",
 "Donnie Moscow","Cheeto Benito","Dolt .45",
  "Tweety Amin","Hillbilly Hitler","Clementine Caligula",

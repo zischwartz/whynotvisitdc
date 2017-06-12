@@ -10,8 +10,7 @@ throttledRequest.configure({
 });
 
 // XXX should all be in one place, make sure this matches
-let people = ["Donald Trump", "Sarah Huckabee Sanders", "Mike Pence", "Sean Spicer", "Kellyanne Conway", "Steve Bannon", "Jared Kushner", "Ivanka Trump", "Mitch McConnell", "Paul Ryan", "Rex Tillerson", "Sebastian Gorka", "Jeff Sessions"]
-
+let people = ["Donald Trump", "Sarah Huckabee Sanders", "Mike Pence", "Sean Spicer", "Kellyanne Conway", "Steve Bannon", "Jared Kushner", "Ivanka Trump", "Mitch McConnell", "Paul Ryan", "Rex Tillerson", "Sebastian Gorka", "Jeff Sessions", "Washington DC"]
 // console.log(people[0].replace(/ /g, '_'))
 
 async function get_image_urls(term){

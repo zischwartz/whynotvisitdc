@@ -1,3 +1,4 @@
 getimages/output/
 bot/src/images/
 bot/output/
+.env
