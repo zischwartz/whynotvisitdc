@@ -18,5 +18,8 @@ ADD src src
 # we'll override this with `-v` to map to src live
 # note this means you'll still have to rebuild  when you
 
+# currently only used for twitter secret stuff.
+ADD .env .env
+
 # and then finally run it
 CMD node  --harmony-async-await ./src/index.js

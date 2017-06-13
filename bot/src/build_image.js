@@ -100,6 +100,8 @@ async function build_post_image(data){
   // console.log(font)
   // debug!
   // meta['title'] ="Come on down to the District of Columbia"
+
+  // adjust title size based on
   let font_size = _.contains(["Frijole-Regular","BungeeShade-Regular", "FasterOne-Regular"], font) ? 30 : 36
   font_size = meta["title"] == "Come on down to the District of Columbia" ? font_size : font_size+5
   // console.log(font_size)
@@ -134,7 +136,9 @@ async function build_post_image(data){
 
   let post_image_buffer = canvas.toBuffer()
   let id = uuidV4()
-  fs.writeFileSync(path.join(__dirname, '../output/', `${id}.png`), post_image_buffer )
+  // fs.writeFileSync(path.join(__dirname, '../output/', `${id}.png`), post_image_buffer )
+  return post_image_buffer
+  // .toString('base64')
   // console.log(data)
   // TODO generate the image
   // TODO

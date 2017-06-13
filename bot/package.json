@@ -12,6 +12,7 @@
   "dependencies": {
     "uuid": "^3.0.1",
     "random-color": "^1.0.1",
+    "later": "^1.2.0",
     "corpora": "github:zischwartz/corpora",
     "underscore": "^1.8.3",
     "later": "^1.2.0",
@@ -19,6 +20,7 @@
     "node-canvas": "github:automattic/node-canvas#v2.0.0-alpha.2",
     "throttled-request": "^0.1.1",
     "sentiment": "^4.0.0",
-    "request":"2.81.0 "
+    "request":"2.81.0 ",
+    "dotenv": "^4.0.0"
   }
 }
