@@ -27,7 +27,7 @@ async function activate(){
   console.log('going to post to twitter')
   console.log(text)
   post_to_twitter(text, image_buffer.toString('base64'))
-  .then(()=>console.log('done posting'))
+  // .then(()=>console.log('done posting'))
 }
 
 activate()

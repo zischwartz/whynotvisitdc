@@ -1,7 +1,7 @@
 // 'use strict'
 let fs = require('fs')
 
-console.log(process.env)
+// console.log(process.env)
 // let dotenv = require('dotenv')
 // require('dotenv').config()
 
