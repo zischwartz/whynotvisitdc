@@ -20,6 +20,7 @@ ADD src src
 
 # currently only used for twitter secret stuff.
 ADD .env .env
+ENV TZ="/usr/share/zoneinfo/America/New_York"
 
 # and then finally run it
 CMD node  --harmony-async-await ./src/index.js
