@@ -34,13 +34,14 @@ async function do_post(){
 
 // setup this thing
 function activate_timer(){
-  // do one post now now
+  // do one post now now, for debug
   do_post()
   // let now = new Date()
   // console.log(now.toLocaleString())
   // off by one because DST? or no, later seems t work. specified in the dockerfile,
   // later seems to work, but date above is wrong by one
-  let textSched = later.parse.text('at 7:35am also at 4:22pm')
+  // 7:35pm
+  let textSched = later.parse.text('at 7:45am also at 4:22pm')
   var grand_timer = later.setInterval(do_post, textSched)
 }
 

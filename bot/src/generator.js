@@ -136,30 +136,26 @@ function generate(){
     else {return caplist.get()}
   })
   // console.log(captions)
-
-
-
-
-  // captions[donald_index] = _.sample(trump_nicks)
-  // jared_nicks, bannon_nicks, sean_nicks
-
-  // TODO
-  // done with specific stuff people, fill it up
-
-
-
+  // add prefix to 0th if it lacks
+  let prefixes = ["we got ", "there's ", "see the ", "they have ", "see "]
+  captions[0] = has_prefix(captions[0]) ? captions[0] : `${_.sample(prefixes)}${captions[0]}`
   // make a nice results array
   captions.forEach( (cap,i)=>{ result.push({cap, image_name:images[i]}) })
   let title  = _.sample(["Why not visit Washington D.C.?", "Come on down to the District of Columbia", "Maybe stop by D.C. sometime"])
   let meta = {title}
   // console.log(result)
-  // todo, all randomness here?
   return {data:result, meta}
 }
 
 // HELPERS
 //
 //
+// copied from index TODO, unite
+function has_prefix(text){
+  let prefix_starts = ["we ", "there's ", "see ", "they "]
+  for (let pre of prefix_starts ){ if (text.startsWith(pre)){ return true }  }
+  return false
+}
 // 50-50 shot, returns boolean
 function coin_flip(){ return Math.random() < 0.5 ? false : true }
 
