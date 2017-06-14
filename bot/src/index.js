@@ -15,7 +15,7 @@ let post_to_twitter = require("./twitter.js")
 // let post = require("./post.js")
 
 
-
+// actually create a post
 async function do_post(){
   let data = generator()
   let image_buffer = await build_image(data)
@@ -32,18 +32,28 @@ async function do_post(){
   // .then(()=>console.log('done posting'))
 }
 
+// setup this thing
 function activate_timer(){
-  let now = new Date()
-  let am = now.toLocaleString()
-  console.log(am)
-  let textSched = later.parse.text('at 7:30am also at 4:00pm')
-  var grand_timer = later.setInterval(begin_activity, textSched)
+  // do one post now now
+  do_post()
+  // let now = new Date()
+  // console.log(now.toLocaleString())
+  // off by one because DST? or no, later seems t work. specified in the dockerfile,
+  // later seems to work, but date above is wrong by one
+  let textSched = later.parse.text('at 7:35am also at 4:22pm')
+  var grand_timer = later.setInterval(do_post, textSched)
 }
+
+// and begin!
 activate_timer()
 
-// console.log(data)
 
-// from begatbot
+
+// Helpers
+//
+//
+
+// keep trying till it tweets, not that great, but I guess there's a built in timeout
 async function try_posting_a_tweet(text, image_data, first_try=true){
   if (!first_try){
     // we could do something here to modify the tweet,
@@ -60,7 +70,6 @@ async function try_posting_a_tweet(text, image_data, first_try=true){
   }
 }
 
-// helpers
 // does this first caption already have a "see" etc? don't add one!
 function has_prefix(text){
   let prefix_starts = ["we ", "there's ", "see ", "they "]
