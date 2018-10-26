@@ -1,7 +1,7 @@
 {
   "name": "whynotimagebot",
   "version": "1.0.0",
-  "description": "an example for using docker machine",
+  "description": "generate images and posts them",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -17,8 +17,7 @@
     "underscore": "^1.8.3",
     "later": "^1.2.0",
     "twit": "^2.2.5",
-    "node-canvas": "github:automattic/node-canvas#v2.0.0-alpha.2",
-    "throttled-request": "^0.1.1",
+    "node-canvas": "git://github.com/automattic/node-canvas#v2.0.0-alpha.2",
     "sentiment": "^4.0.0",
     "request":"2.81.0 ",
     "dotenv": "^4.0.0"

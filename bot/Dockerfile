@@ -1,4 +1,5 @@
-FROM node
+# FROM node:8.1.0
+FROM node:7.8.0
 RUN apt-get update
 
 # for cairo
@@ -23,4 +24,5 @@ ADD .env .env
 ENV TZ="/usr/share/zoneinfo/America/New_York"
 
 # and then finally run it
+# CMD node ./src/index.js
 CMD node  --harmony-async-await ./src/index.js

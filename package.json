@@ -15,9 +15,9 @@
     "to-png": "for i in bot/src/images/*.jpeg; do sips -s format png $i --out $i.png;done",
     "machine-create":"docker-machine create --driver amazonec2 --amazonec2-region us-east-2 --amazonec2-instance-type t2.micro bot-machine",
     "machine-stop":"docker-machine stop bot-machine",
-    "machine-env": "eval $(docker-machine env bot-machine)",
+    "machine-env-DOES_NOT_WORK_NEED_TO_RUN_MANUALLY": "eval $(docker-machine env bot-machine)",
     "bot-run-prod": "docker run -d zischwartz/wnvdcbot",
-    "deploy-bot-to-machine": "npm run bot-build && docker push zischwartz/wnvdcbot && npm run machine-env && npm run bot-run-prod",
+    "deploy-bot-to-machine": "npm run bot-build && docker push zischwartz/wnvdcbot && npm run bot-run-prod",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
